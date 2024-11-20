@@ -1,10 +1,10 @@
-import { Todo } from "@/types/todo";
+import { NewTodo, Todo } from "@/types/todo";
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
 import { TodoStore } from "@/types/stores";
 
 // Helpers
-const createNewTodo = (todo: Omit<Todo, "id" | "createdAt">): Todo => {
+const createNewTodo = (todo: NewTodo): Todo => {
   return {
     ...todo,
     id: uuidv4(),
