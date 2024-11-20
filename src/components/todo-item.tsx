@@ -8,19 +8,24 @@ import { useState } from "react";
 import { useUpdateTodo } from "./forms/todo/hooks";
 import UpdateTodo from "./forms/todo/update";
 
-export default function TodoItem({ data }: { data: Todo }) {
+export default function TodoItem({ data: todoDetail }: { data: Todo }) {
   const toggleTodo = useTodoStore((state) => state.toggleTodoCompletion);
+  const deleteTodo = useTodoStore((state) => state.deleteTodoById);
   const [editing, setEditing] = useState(false);
   const { form, onSubmit: formSubmit } = useUpdateTodo();
 
   function onEdit() {
-    form.reset(data);
+    form.reset(todoDetail);
     setEditing(true);
   }
 
   function onSubmit(data: Todo) {
     formSubmit(data);
     setEditing(false);
+  }
+
+  function onDelete() {
+    deleteTodo(todoDetail.id);
   }
   return (
     <div className="flex items-center justify-between border-b last-of-type:border-b-0 py-2">
@@ -29,15 +34,15 @@ export default function TodoItem({ data }: { data: Todo }) {
       ) : (
         <div className="flex items-center">
           <Checkbox
-            checked={data.isCompleted}
-            onChange={() => toggleTodo(data.id)}
+            checked={todoDetail.isCompleted}
+            onChange={() => toggleTodo(todoDetail.id)}
           />
           <Typography
             variant="h6"
-            className={clsx({ "line-through": data.isCompleted })}
-            color={clsx({ textDisabled: data.isCompleted })}
+            className={clsx({ "line-through": todoDetail.isCompleted })}
+            color={clsx({ textDisabled: todoDetail.isCompleted })}
           >
-            {data.title}
+            {todoDetail.title}
           </Typography>
         </div>
       )}
@@ -46,7 +51,7 @@ export default function TodoItem({ data }: { data: Todo }) {
           <IconButton onClick={onEdit}>
             <Edit />
           </IconButton>
-          <IconButton color="error">
+          <IconButton color="error" onClick={onDelete}>
             <Delete />
           </IconButton>
         </div>
