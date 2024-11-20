@@ -14,7 +14,7 @@ export function useNewTodo() {
 
   const onSubmit = (data: NewTodo) => {
     addTodo(data);
-    form.reset()
+    form.reset();
   };
 
   return { form, onSubmit };
