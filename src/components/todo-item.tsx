@@ -1,5 +1,4 @@
 "use client";
-import { useTodoStore } from "@/stores/useTodoStore";
 import { type Todo } from "@/types/todo";
 import { Delete, Edit } from "@mui/icons-material";
 import { Checkbox, IconButton, Typography } from "@mui/material";
@@ -8,9 +7,15 @@ import { useState } from "react";
 import { useUpdateTodo } from "./forms/todo/hooks";
 import UpdateTodo from "./forms/todo/update";
 
-export default function TodoItem({ data: todoDetail }: { data: Todo }) {
-  const toggleTodo = useTodoStore((state) => state.toggleTodoCompletion);
-  const deleteTodo = useTodoStore((state) => state.deleteTodoById);
+export default function TodoItem({
+  data: todoDetail,
+  onDelete,
+  onToggle,
+}: {
+  data: Todo;
+  onToggle: () => void;
+  onDelete: () => void;
+}) {
   const [editing, setEditing] = useState(false);
   const { form, onSubmit: formSubmit } = useUpdateTodo();
 
@@ -23,20 +28,13 @@ export default function TodoItem({ data: todoDetail }: { data: Todo }) {
     formSubmit(data);
     setEditing(false);
   }
-
-  function onDelete() {
-    deleteTodo(todoDetail.id);
-  }
   return (
     <div className="flex items-center justify-between border-b last-of-type:border-b-0 py-2">
       {editing ? (
         <UpdateTodo form={form} onSubmit={(data) => onSubmit(data)} />
       ) : (
         <div className="flex items-center">
-          <Checkbox
-            checked={todoDetail.isCompleted}
-            onChange={() => toggleTodo(todoDetail.id)}
-          />
+          <Checkbox checked={todoDetail.isCompleted} onChange={onToggle} />
           <Typography
             variant="h6"
             className={clsx({ "line-through": todoDetail.isCompleted })}
@@ -48,10 +46,10 @@ export default function TodoItem({ data: todoDetail }: { data: Todo }) {
       )}
       {editing ? null : (
         <div className="flex items-center gap-2">
-          <IconButton onClick={onEdit}>
+          <IconButton onClick={onEdit} data-testid="todo-edit-button">
             <Edit />
           </IconButton>
-          <IconButton color="error" onClick={onDelete}>
+          <IconButton color="error" onClick={onDelete} data-testid="todo-delete-button">
             <Delete />
           </IconButton>
         </div>

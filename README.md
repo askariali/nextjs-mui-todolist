@@ -5,6 +5,7 @@ This is a [Next.js v15](https://nextjs.org) project bootstrapped with [`create-n
 - Material-UI + TailwindCSS: Styling Tools
 - Zustand: Application State Manager
 - Docker: Container Management Tool
+- Testing-Library + Vitest: Testing
 
 ## Development
 
@@ -18,7 +19,15 @@ pnpm i
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run Tests
+
+```bash
+# Show test coverage
+pnpm test:coverage
+
+# Show tests visually in browser
+pnpm test:ui                    # The browser will automatically open at http://localhost:51204
+```
 
 ## Production
 You can run the production-ready docker image using these commands:
