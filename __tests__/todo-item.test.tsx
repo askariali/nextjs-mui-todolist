@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import TodoItem from "@/components/todo-item";
 
 describe("TodoItem Component", () => {
@@ -15,7 +15,7 @@ describe("TodoItem Component", () => {
 
   it("should display the todo title", () => {
     setup();
-    throw new Error("Not implemented yet");
+    expect(screen.getByText(mockTodo.title)).toBeInTheDocument();
   });
 
   it("should mark the todo as done when the checkbox is clicked", () => {
