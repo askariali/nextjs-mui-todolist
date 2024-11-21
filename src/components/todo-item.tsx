@@ -1,5 +1,4 @@
 "use client";
-import { useTodoStore } from "@/stores/useTodoStore";
 import { type Todo } from "@/types/todo";
 import { Delete, Edit } from "@mui/icons-material";
 import { Checkbox, IconButton, Typography } from "@mui/material";
