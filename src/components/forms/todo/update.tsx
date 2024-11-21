@@ -24,7 +24,7 @@ export default function UpdateTodo({
           input: {
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton type="submit">
+                <IconButton type="submit" data-testid="submit-todo-button">
                   <AddIcon />
                 </IconButton>
               </InputAdornment>

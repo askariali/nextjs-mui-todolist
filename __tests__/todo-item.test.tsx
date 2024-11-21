@@ -55,8 +55,17 @@ describe("TodoItem Component", () => {
     expect(screen.getByRole("textbox")).toHaveValue(mockTodo.title);
   });
 
-  it("should update the title when edited and submitted", () => {
+  it("should update the title when edited and submitted", async () => {
+    // TODO: This test needs more modifications to the component to pass.
     setup();
-    throw new Error("Not implemented yet");
+
+    const editButton = screen.getByTestId("todo-edit-button");
+    const user = UserEvent.setup();
+    await user.click(editButton);
+    const editTodoInput = screen.getByRole("textbox");
+    user.type(editTodoInput, "updated todo title");
+    await user.click(screen.getByTestId("submit-todo-button"));
+
+    expect(screen.getByText("updated todo title")).toBeInTheDocument();
   });
 });
