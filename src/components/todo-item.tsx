@@ -47,7 +47,7 @@ export default function TodoItem({
       )}
       {editing ? null : (
         <div className="flex items-center gap-2">
-          <IconButton onClick={onEdit}>
+          <IconButton onClick={onEdit} data-testid="todo-edit-button">
             <Edit />
           </IconButton>
           <IconButton color="error" onClick={onDelete} data-testid="todo-delete-button">
