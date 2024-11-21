@@ -32,9 +32,12 @@ describe("TodoItem Component", () => {
     expect(onToggle).toHaveBeenCalled();
   });
 
-  it("should delete the todo when delete button is clicked", () => {
+  it("should delete the todo when delete button is clicked", async () => {
     setup();
-    throw new Error("Not implemented yet");
+    const deleteButton = screen.getByTestId("todo-delete-button");
+    const user = UserEvent.setup();
+    await user.click(deleteButton);
+    expect(onDelete).toHaveBeenCalled()
   });
 
   it("should enter edit mode when edit button is clicked", () => {

@@ -50,7 +50,7 @@ export default function TodoItem({
           <IconButton onClick={onEdit}>
             <Edit />
           </IconButton>
-          <IconButton color="error" onClick={onDelete}>
+          <IconButton color="error" onClick={onDelete} data-testid="todo-delete-button">
             <Delete />
           </IconButton>
         </div>
