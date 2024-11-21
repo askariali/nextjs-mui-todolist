@@ -1,0 +1,5 @@
+3 - create a ci pipeline to run the tests before merging.
+4 - write some documents using jsdoc
+5 - add i18n
+6 - add husky, commitlint, run tests before push
+7 - add animations
