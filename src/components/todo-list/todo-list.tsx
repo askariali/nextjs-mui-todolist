@@ -1,14 +1,14 @@
 "use client";
 
-import { useTodoStore } from "@/stores/useTodoStore";
+import useTodoStore from "@/stores/use-todo-store";
 import { Paper, Stack, Typography } from "@mui/material";
-import TodoItem from "./todo-item";
+import TodoItem from "../todo-item";
 import React from "react";
 
 export default function TodoList() {
   const todoList = useTodoStore((state) => state.todos);
   const toggleTodo = useTodoStore((state) => state.toggleTodoCompletion);
-  const deleteTodo = useTodoStore((state) => state.deleteTodoById);
+  const deleteTodo = useTodoStore((state) => state.deleteTodo);
   return (
     <Paper className="p-4">
       {todoList.length ? (

@@ -1,5 +1,5 @@
 import CreateNewTodo from "@/components/forms/todo/create";
-import TodoList from "@/components/todo-list";
+import TodoList from "@/components/todo-list/todo-list";
 import { Container, Stack, Typography } from "@mui/material";
 
 export default function Home() {

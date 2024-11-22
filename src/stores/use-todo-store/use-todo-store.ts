@@ -27,15 +27,15 @@ const toggleTodoCompletion = (todos: Todo[], id: string) => {
 };
 
 // Store
-export const useTodoStore = create<TodoStore>((set) => ({
+const useTodoStore = create<TodoStore>((set) => ({
   todos: [],
   addTodo: (todo) =>
     set((state) => ({
       todos: [...state.todos, createNewTodo(todo)],
     })),
-  deleteTodoById: (id) =>
+  deleteTodo: (id) =>
     set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),
-  updateTodoById: (id, updates) =>
+  updateTodo: (id, updates) =>
     set((state) => ({
       todos: updateTodoInList(state.todos, id, updates),
     })),
@@ -44,3 +44,5 @@ export const useTodoStore = create<TodoStore>((set) => ({
       todos: toggleTodoCompletion(state.todos, id),
     })),
 }));
+
+export default useTodoStore
