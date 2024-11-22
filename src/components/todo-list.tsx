@@ -8,7 +8,7 @@ import React from "react";
 export default function TodoList() {
   const todoList = useTodoStore((state) => state.todos);
   const toggleTodo = useTodoStore((state) => state.toggleTodoCompletion);
-  const deleteTodo = useTodoStore((state) => state.deleteTodoById);
+  const deleteTodo = useTodoStore((state) => state.deleteTodo);
   return (
     <Paper className="p-4">
       {todoList.length ? (

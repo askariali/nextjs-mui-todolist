@@ -21,7 +21,7 @@ export function useNewTodo() {
 }
 
 export function useUpdateTodo() {
-  const updateTodo = useTodoStore((state) => state.updateTodoById);
+  const updateTodo = useTodoStore((state) => state.updateTodo);
   const form = useForm<Todo>({
     defaultValues: {
       title: "",
@@ -39,7 +39,7 @@ export function useUpdateTodo() {
 }
 
 export function useDeleteTodo() {
-  const deleteTodo = useTodoStore((state) => state.deleteTodoById);
+  const deleteTodo = useTodoStore((state) => state.deleteTodo);
 
   const onDelete = (id: string) => {
     deleteTodo(id);

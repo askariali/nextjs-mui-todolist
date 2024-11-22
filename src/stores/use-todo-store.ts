@@ -33,9 +33,9 @@ export const useTodoStore = create<TodoStore>((set) => ({
     set((state) => ({
       todos: [...state.todos, createNewTodo(todo)],
     })),
-  deleteTodoById: (id) =>
+  deleteTodo: (id) =>
     set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),
-  updateTodoById: (id, updates) =>
+  updateTodo: (id, updates) =>
     set((state) => ({
       todos: updateTodoInList(state.todos, id, updates),
     })),
