@@ -1,8 +1,8 @@
 "use client";
 
-import { useTodoStore } from "@/stores/use-todo-store";
+import useTodoStore from "@/stores/use-todo-store";
 import { Paper, Stack, Typography } from "@mui/material";
-import TodoItem from "./todo-item";
+import TodoItem from "../todo-item";
 import React from "react";
 
 export default function TodoList() {

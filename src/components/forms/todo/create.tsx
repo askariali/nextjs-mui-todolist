@@ -2,7 +2,7 @@
 
 import { IconButton, InputAdornment, Paper } from "@mui/material";
 import { useNewTodo } from "./hooks";
-import ControlledTextField from "@/components/controlled/controlled-textfield";
+import Input from "@/components/input";
 import AddIcon from "@mui/icons-material/Add";
 
 export default function CreateNewTodo() {
@@ -10,7 +10,7 @@ export default function CreateNewTodo() {
   return (
     <Paper className="p-4">
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ControlledTextField
+        <Input
           name="title"
           control={form.control}
           placeholder="Write your todo..."

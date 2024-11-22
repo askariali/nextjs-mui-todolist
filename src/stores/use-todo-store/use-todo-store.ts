@@ -27,7 +27,7 @@ const toggleTodoCompletion = (todos: Todo[], id: string) => {
 };
 
 // Store
-export const useTodoStore = create<TodoStore>((set) => ({
+const useTodoStore = create<TodoStore>((set) => ({
   todos: [],
   addTodo: (todo) =>
     set((state) => ({
@@ -44,3 +44,5 @@ export const useTodoStore = create<TodoStore>((set) => ({
       todos: toggleTodoCompletion(state.todos, id),
     })),
 }));
+
+export default useTodoStore

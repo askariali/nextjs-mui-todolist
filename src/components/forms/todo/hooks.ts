@@ -1,5 +1,5 @@
 "use client";
-import { useTodoStore } from "@/stores/use-todo-store";
+import useTodoStore from "@/stores/use-todo-store/use-todo-store";
 import { NewTodo, Todo } from "@/types/todo";
 import { useForm } from "react-hook-form";
 
