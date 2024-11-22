@@ -4,18 +4,17 @@ import { Delete, Edit } from "@mui/icons-material";
 import { Checkbox, IconButton, Typography } from "@mui/material";
 import clsx from "clsx";
 import { useState } from "react";
-import { useUpdateTodo } from "./forms/todo/hooks";
-import UpdateTodo from "./forms/todo/update";
+import { useUpdateTodo } from "../forms/todo/hooks";
+import UpdateTodo from "../forms/todo/update";
 
-export default function TodoItem({
-  data: todoDetail,
-  onDelete,
-  onToggle,
-}: {
+type TodoItemProps = {
   data: Todo;
   onToggle: () => void;
   onDelete: () => void;
-}) {
+};
+
+export default function TodoItem(props: TodoItemProps) {
+  const { data: todoDetail, onDelete, onToggle } = props;
   const [editing, setEditing] = useState(false);
   const { form, onSubmit: formSubmit } = useUpdateTodo();
 
@@ -49,7 +48,11 @@ export default function TodoItem({
           <IconButton onClick={onEdit} data-testid="todo-edit-button">
             <Edit />
           </IconButton>
-          <IconButton color="error" onClick={onDelete} data-testid="todo-delete-button">
+          <IconButton
+            color="error"
+            onClick={onDelete}
+            data-testid="todo-delete-button"
+          >
             <Delete />
           </IconButton>
         </div>
